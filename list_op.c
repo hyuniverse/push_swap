@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:18:21 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/02/21 19:31:52 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:41:26 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_node	*pop_top(t_stack *stack)
 	else
 		stack->top->prev = 0;
 	stack->size--;
+	node->next = 0;
 	return (node);
 }
 
@@ -75,6 +76,7 @@ t_node	*pop_bottom(t_stack *stack)
 	else
 		stack->bottom->next = 0;
 	stack->size--;
+	node->prev = 0;
 	return (node);
 }
 
@@ -84,8 +86,14 @@ void	swap(t_stack *stack)
 
 	if (stack->size < 2)
 		return ;
-	tmp = stack->top->next;
-	stack->top->next = tmp->next;
-	tmp->next = stack->top;
-	stack->top = tmp;
+	tmp = stack->top;
+	tmp->prev = tmp->next;
+	tmp->next->next = tmp;
+	tmp->next->prev = 0;
+	stack->top = tmp->next;
+	if (stack->size == 2)
+	{
+		stack->bottom = tmp;
+		tmp->next = 0;
+	}
 }

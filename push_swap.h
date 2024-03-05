@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:41:30 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/02/21 18:59:28 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/05 21:01:16 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,27 @@
 
 # include <stdio.h> //지우기
 
+# define INT_MAX 2147483647
+
 typedef struct s_node
 {
 	int				data;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
+
+typedef struct s_index
+{
+	int		data;
+	t_node	*node;
+}	t_index;
+
+typedef struct s_rotation
+{
+	int	a;
+	int	b;
+	int	total;
+}	t_rotation;
 
 typedef struct s_stack
 {
@@ -42,8 +57,16 @@ int		ft_isdigit(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_printf(const char *str, ...);
 size_t	ft_strlen(const char *s);
+int		ft_atoi(const char *nbr);
+void	ft_putstr_fd(char *s, int fd);
 
 void	init_stack(t_stack *stack, char name);
+int		valid(char	**argv, t_stack *a);
+void	quick_sort(t_index *index, int n);
+int		is_space(char c);
+void	push_swap(t_stack *a, t_stack *b);
+void	print_status(t_stack *a, t_stack *b);
+void	rotate_stacks(t_stack *a, t_stack *b, t_rotation *rot);
 
 t_node	*get_node(int data);
 void	free_nodes(t_node *node);

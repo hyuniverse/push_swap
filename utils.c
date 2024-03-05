@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:20:42 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/02/21 17:18:21 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:33:32 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,39 @@ void	free_nodes(t_node *node)
 	if (node->next)
 		free_nodes(node->next);
 	free(node);
+}
+
+int	is_space(char c)
+{
+	if (c == ' ')
+		return (1);
+	return (0);
+}
+
+void	print_status(t_stack *a, t_stack *b)
+{
+	t_node	*pa;
+	t_node	*pb;
+
+	pa = a->top;
+	pb = b->top;
+	printf("%10c  %10c\n", 'a', 'b');
+	printf("-------------  -------------\n");
+	while (pa && pb)
+	{
+		printf(" %10d  %10d \n", pa->data, pb->data);
+		pa = pa->next;
+		pb = pb->next;
+	}
+	while (pa)
+	{
+		printf(" %10d  \n", pa->data);
+		pa = pa->next;
+	}
+	while (pb)
+	{
+		printf("%10c   %10d\n", ' ', pb->data);
+		pb = pb->next;
+	}
+	printf("\n");
 }

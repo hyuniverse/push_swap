@@ -6,28 +6,31 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:16:44 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/02/21 16:56:23 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:13:42 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char	**av)
+void	leak_check(void)
 {
-	t_stack	a;
-	t_stack	b;
+	system("leaks push_swap");
+}
+
+int main(int argc, char **argv)
+{
+	t_stack a;
+	t_stack b;
 
 	init_stack(&a, 'a');
 	init_stack(&b, 'b');
-
-	//a에 av내용 저장하면서 valid check하기
-		//유효할 경우에만 정렬 알고리즘 실행
-		//아닌 경우 그냥 free해주고 return (0);
-
+	if (argc > 1 && valid(argv, &a))
+		push_swap(&a, &b);
+	else
+		ft_putstr_fd("ERROR\n", 2);
 	if (a.top)
-		free(a.top);
+		free_nodes(a.top);
 	if (b.top)
-		free(b.top);
+		free_nodes(b.top);
 	return (0);
 }
- 
