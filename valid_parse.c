@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:53:35 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/02/22 21:55:02 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:32:51 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,19 @@ int	valid_num(char **p)
 	while ((*p + len) && ft_isdigit(*(*p + len)))
 		len++;
 	if (len > 10 || (*(*p + len) && !is_space(*(*p + len))))
-		return (0);
-	//만약 len == 0일 경우 음수이거나 숫자 아닌게 온거임. 
+		return (-1);
 	num = ft_atoi(*p);
-	if (num < 1 || num > INT_MAX)
-		return (0);
+	if (num < 0 || num > INT_MAX)
+		return (-1);
 	*p += len;
 	return (num);
+}
+
+void	name_morohazi(t_stack *a, t_index *index, int idx, int data)
+{
+	a->push_bottom(a, get_node(data));
+	index[idx].data = data;
+	index[idx].node = a->bottom;
 }
 
 int	parse(char	**argv, t_stack *a, t_index *index)
@@ -64,11 +70,9 @@ int	parse(char	**argv, t_stack *a, t_index *index)
 			if (*p)
 			{
 				num = valid_num(&p);
-				if (!num)
+				if (num < 0)
 					return (0);
-				a->push_bottom(a, get_node(num));
-				index[j].data = num;
-				index[j++].node = a->bottom;
+				name_morohazi(a, index, j++, num);
 			}
 		}
 	}

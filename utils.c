@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:20:42 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/02/22 21:33:32 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:33:52 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,30 +52,30 @@ int	is_space(char c)
 	return (0);
 }
 
-void	print_status(t_stack *a, t_stack *b)
+int	is_sorted(t_stack *a, int option)
 {
-	t_node	*pa;
-	t_node	*pb;
+	t_node	*ptr;
 
-	pa = a->top;
-	pb = b->top;
-	printf("%10c  %10c\n", 'a', 'b');
-	printf("-------------  -------------\n");
-	while (pa && pb)
+	ptr = a->top->next;
+	if (option == 1)
 	{
-		printf(" %10d  %10d \n", pa->data, pb->data);
-		pa = pa->next;
-		pb = pb->next;
+		if (a->top->data != 0)
+			return (0);
+		while (ptr)
+		{
+			if (ptr->data != ptr->prev->data + 1)
+				return (0);
+			ptr = ptr->next;
+		}
 	}
-	while (pa)
+	else if (option == 2)
 	{
-		printf(" %10d  \n", pa->data);
-		pa = pa->next;
+		while (ptr)
+		{
+			if (ptr->data < ptr->prev->data)
+				return (0);
+			ptr = ptr->next;
+		}
 	}
-	while (pb)
-	{
-		printf("%10c   %10d\n", ' ', pb->data);
-		pb = pb->next;
-	}
-	printf("\n");
+	return (1);
 }
