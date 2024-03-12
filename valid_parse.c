@@ -6,18 +6,18 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:53:35 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/08 17:32:51 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:22:05 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	indexing(t_index *index)
+int	indexing(t_index *index, int n)
 {
 	int	i;
 
 	i = 0;
-	while (i < INT_MAX && index[i].data)
+	while (i < INT_MAX && i < n)
 	{
 		if (i > 0 && index[i].data == index[i - 1].data)
 			return (0);
@@ -91,7 +91,7 @@ int	valid(char	**argv, t_stack *a)
 	if (n)
 	{
 		quick_sort(index, n);
-		n = indexing(index);
+		n = indexing(index, n);
 	}
 	free(index);
 	return (n);

@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:10:15 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/08 17:23:45 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:08:53 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	rotate_stacks(t_stack *a, t_stack *b, t_rotation *rot)
 	{
 		while (rot->a && rot->b)
 		{
-			rab(a, b);
+			rab(a, b, 1);
 			rot->a--;
 			rot->b--;
 		}
@@ -67,7 +67,7 @@ void	rotate_stacks(t_stack *a, t_stack *b, t_rotation *rot)
 	{
 		while (rot->a && rot->b)
 		{
-			rrab(a, b);
+			rrab(a, b, 1);
 			rot->a++;
 			rot->b++;
 		}

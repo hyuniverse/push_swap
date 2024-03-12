@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:36:11 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/08 17:13:42 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:09:11 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	push_to_b(t_stack *a, t_stack *b)
 		{
 			if (a->top->data < pivot2)
 			{
-				p(a, b);
+				p(a, b, 1);
 				if (b->top->data >= pivot1)
 					r(b, 1);
 			}
@@ -61,7 +61,7 @@ void	push_to_b(t_stack *a, t_stack *b)
 		}
 	}
 	while (a->size > 3)
-		p(a, b);
+		p(a, b, 1);
 }
 
 void	push_swap(t_stack *a, t_stack *b)
@@ -75,7 +75,7 @@ void	push_swap(t_stack *a, t_stack *b)
 	{
 		rot = get_min_rotation(a, b);
 		rotate_stacks(a, b, &rot);
-		p(b, a);
+		p(b, a, 1);
 	}
 	final_rotation(a);
 }

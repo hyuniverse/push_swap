@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:18:45 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/02/21 19:35:54 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:07:09 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ void	s(t_stack *stack, int type)
 		printf("s%c\n", stack->name);
 }
 
-void	p(t_stack *u, t_stack *v)
+void	p(t_stack *u, t_stack *v, int type)
 {
 	t_node	*tmp;
 
 	tmp = u->pop_top(u);
 	v->push_top(v, tmp);
-	printf("p%c\n", v->name);
+	if (type == 1)
+		printf("p%c\n", v->name);
 }
 
 void	r(t_stack *stack, int type)
