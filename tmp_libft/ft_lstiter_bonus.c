@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/30 10:26:23 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/12 16:37:56 by sehyupar         ###   ########.fr       */
+/*   Created: 2023/11/15 17:53:02 by sehyupar          #+#    #+#             */
+/*   Updated: 2023/11/15 18:02:04 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	init_static(t_buf *rd)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	rd->i = 0;
-	while (rd->i < rd->n)
-		rd->buf[(rd->i)++] = 0;
-	rd->i = 0;
-	rd->n = 0;
+	if (lst && lst->content)
+		f(lst->content);
+	if (lst && lst->next)
+		ft_lstiter(lst->next, f);
 }

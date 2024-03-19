@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:41:30 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/12 17:08:05 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:54:04 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
-# include <stdio.h> //지우기
-
+# include <stdio.h>
 # define INT_MAX 2147483647
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 512
-# endif
-
-typedef struct s_buf
-{
-	char	buf[BUFFER_SIZE];
-	int		n;
-	int		i;	
-	int		len;
-}	t_buf;
-
-typedef struct s_tmp
-{
-	char	*buf;
-	int		size;
-}	t_tmp;
 
 typedef struct s_node
 {
@@ -71,10 +51,7 @@ typedef struct s_stack
 	void	(*swap)(struct s_stack*);
 }	t_stack;
 
-
 char		*get_next_line(int fd);
-void		init_static(t_buf *rd);
-
 int			ft_isdigit(int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_printf(const char *str, ...);

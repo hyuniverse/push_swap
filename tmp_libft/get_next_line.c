@@ -6,11 +6,11 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:03 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/12 16:38:01 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:37:39 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
 int	partial_line_cpy(int fd, t_tmp *tmp, t_buf *rd)
 {
