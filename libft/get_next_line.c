@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:03 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/19 16:37:39 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:59:26 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,8 @@ char	*get_next_line(int fd)
 	else
 		str = whole_line_cpy(fd, &tmp, &rd, &i);
 	free(tmp.buf);
+	i = 0;
+	while (i < 10000)
+		i++;
 	return (str);
 }

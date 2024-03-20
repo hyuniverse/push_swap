@@ -1,6 +1,6 @@
 CC		=	cc
 CFLAGS	=	-Wall -Werror -Wextra
-LIB_DIR = ./tmp_libft
+LIB_DIR = ./libft
 LIB = libft.a
 INCLUDE = push_swap.h
 COMMON_SRCS = list_op.c stack_op.c stack_op2.c\

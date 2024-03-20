@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:41:30 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/19 19:54:04 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:48:55 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
+
 # define INT_MAX 2147483647
 
 typedef struct s_node
@@ -58,6 +58,7 @@ int			ft_printf(const char *str, ...);
 size_t		ft_strlen(const char *s);
 int			ft_atoi(const char *nbr);
 void		ft_putstr_fd(char *s, int fd);
+size_t		ft_strlcat(char *dest, const char *src, size_t size);
 
 void		init_stack(t_stack *stack, char name);
 int			valid(char	**argv, t_stack *a);

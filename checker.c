@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:46:46 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/19 19:11:39 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:58:48 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,18 @@ int	check_push_swap(t_stack *a, t_stack *b)
 	return (1);
 }
 
+void	leak_test(void)
+{
+	system("leaks checker");
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
 	int		n;
 
+	atexit(leak_test);
 	init_stack(&a, 'a');
 	init_stack(&b, 'b');
 	if (argc > 1 && valid(argv, &a))
@@ -78,7 +84,7 @@ int	main(int argc, char **argv)
 			ft_putstr_fd("OK\n", 1);
 	}
 	else if (argc > 1)
-		ft_putstr_fd("ERROR\n", 3);
+		ft_putstr_fd("ERROR\n", 2);
 	if (a.top)
 		free_nodes(a.top);
 	if (b.top)
