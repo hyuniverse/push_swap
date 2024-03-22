@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:20:42 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/08 17:33:52 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:22:23 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	free_nodes(t_node *node)
 
 int	is_space(char c)
 {
-	if (c == ' ')
+	if (c == 32 || (c >= 8 && c <= 13))
 		return (1);
 	return (0);
 }

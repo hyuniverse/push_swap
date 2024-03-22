@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:18:45 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/20 19:57:47 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:54:30 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	s(t_stack *stack, int type)
 {
 	char	*str;
 
+	if (stack->size < 2)
+		return ;
 	stack->swap(stack);
 	if (type == 1)
 	{
@@ -34,6 +36,8 @@ void	p(t_stack *u, t_stack *v, int type)
 	char	*str;
 	t_node	*tmp;
 
+	if (u->size < 1)
+		return ;
 	tmp = u->pop_top(u);
 	v->push_top(v, tmp);
 	if (type == 1)
@@ -53,6 +57,8 @@ void	r(t_stack *stack, int type)
 	char	*str;
 	t_node	*tmp;
 
+	if (stack->size < 2)
+		return ;
 	tmp = stack->pop_top(stack);
 	stack->push_bottom(stack, tmp);
 	if (type == 1)
@@ -72,6 +78,8 @@ void	rr(t_stack *stack, int type)
 	char	*str;
 	t_node	*tmp;
 
+	if (stack->size < 2)
+		return ;
 	tmp = stack->pop_bottom(stack);
 	stack->push_top(stack, tmp);
 	if (type == 1)

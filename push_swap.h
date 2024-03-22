@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:41:30 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/20 19:48:55 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:48:29 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <unistd.h>
 
 # define INT_MAX 2147483647
+# define INT_MIN -2147483648
+# define UNVALID_NUM 2147483648
 
 typedef struct s_node
 {

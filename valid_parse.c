@@ -6,11 +6,12 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:53:35 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/03/12 17:22:05 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:57:10 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	indexing(t_index *index, int n)
 {
@@ -27,24 +28,26 @@ int	indexing(t_index *index, int n)
 	return (1);
 }
 
-int	valid_num(char **p)
+long	valid_num(char **p)
 {
-	int	len;
-	int	num;
+	int		len;
+	long	num;
 
 	len = 0;
+	if (**p == '-')
+		len++;
 	while ((*p + len) && ft_isdigit(*(*p + len)))
 		len++;
-	if (len > 10 || (*(*p + len) && !is_space(*(*p + len))))
-		return (-1);
+	if ((len > 10 && **p == '-' && ft_strncmp(*p, "-2147483648", 11) > 0) || \
+	(len > 9 && **p != '-' && ft_strncmp(*p, "2147483647", 10) > 0) || \
+	(*(*p + len) && !is_space(*(*p + len))))
+		return (UNVALID_NUM);
 	num = ft_atoi(*p);
-	if (num < 0 || num > INT_MAX)
-		return (-1);
 	*p += len;
 	return (num);
 }
 
-void	name_morohazi(t_stack *a, t_index *index, int idx, int data)
+void	add_index_list(t_stack *a, t_index *index, int idx, int data)
 {
 	a->push_bottom(a, get_node(data));
 	index[idx].data = data;
@@ -54,7 +57,7 @@ void	name_morohazi(t_stack *a, t_index *index, int idx, int data)
 int	parse(char	**argv, t_stack *a, t_index *index)
 {
 	char	*p;
-	int		num;
+	long	num;
 	int		i;
 	int		j;
 
@@ -70,9 +73,9 @@ int	parse(char	**argv, t_stack *a, t_index *index)
 			if (*p)
 			{
 				num = valid_num(&p);
-				if (num < 0)
+				if (num == UNVALID_NUM)
 					return (0);
-				name_morohazi(a, index, j++, num);
+				add_index_list(a, index, j++, num);
 			}
 		}
 	}
